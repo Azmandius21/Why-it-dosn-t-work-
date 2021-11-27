@@ -18,9 +18,7 @@ class Account
   #public
 
   def display_balance(pin_number)
-    puts @pin
-    puts pin_number
-    puts pin_number == @pin ? "Balance" : pin_error 
+    puts pin_number == pin ? "Balance is $#{balance}" : pin_error 
   end
 
   def withdraw(pin_number, amount)
