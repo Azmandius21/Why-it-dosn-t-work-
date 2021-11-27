@@ -1,0 +1,56 @@
+class Account
+  attr_reader :name, :balance
+  def initialize(name, balance=100)
+    @name = name
+    @balance = balance
+  end
+
+  #private
+
+  def pin 
+    @pin =1111
+  end
+
+  def pin_error 
+   return "Access denied: incorrect PIN."
+  end
+
+  #public
+
+  def display_balance(pin_number)
+    puts @pin
+    puts pin_number
+    puts pin_number == @pin ? "Balance" : pin_error 
+  end
+
+  def withdraw(pin_number, amount)
+    if pin_number == @pin
+      @balance-= amount
+      puts "Withdrew #{amount}. New balance: $#{@balance}."
+    else
+       pin_error
+    end
+  end
+end
+##############################################################
+checking_account = Account.new("Aziz", 500000)
+checking_account.display_balance(1111)
+=begin puts "Welcome to our bank. How we can help you?" 
+puts "if you want to check you balance write 'balance'."
+puts "If you want to withdraw money write  'withdraw'."
+puts "If you want to deposit your money write 'deposite'"
+movies = gets.chomp
+
+case movies
+  when "balance" 
+    puts "Enter your PIN, please."
+    pin_number = gets.chomp
+    puts "Your pin number : #{pin_number}"
+   checking_account.display_balance(pin_number)
+  when "withdraw"
+    puts "withdraw"
+  when "deposite"
+    puts "deposite"
+  else puts "!Enter correct word!"
+end
+=end
